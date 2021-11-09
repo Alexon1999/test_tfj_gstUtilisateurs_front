@@ -98,6 +98,7 @@ const App: React.FC = () => {
                 selectedUser={selectedUser}
                 updateUser={updateUser}
                 createUser={createUser}
+                setSelectedUser={setSelectedUser}
               />
             </Route>
           </IonRouterOutlet>

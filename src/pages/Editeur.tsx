@@ -10,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import User from "../models/User";
 
@@ -18,21 +18,37 @@ interface EditeurI {
   selectedUser: User | null;
   createUser: Function;
   updateUser: Function;
+  setSelectedUser: Function;
 }
+
+const newUser: User = {
+  nom: "",
+  prenom: "",
+  email: "",
+  mdp: "",
+  age: 0,
+};
 
 const Editeur: React.FC<EditeurI> = ({
   selectedUser = null,
   createUser,
   updateUser,
+  setSelectedUser,
 }) => {
   const [user, setUser] = useState<User>(() => {
     if (selectedUser) return selectedUser;
-
-    const newUser: User = { nom: "", prenom: "", email: "", mdp: "", age: 0 };
     return newUser;
   });
 
   const history = useHistory();
+
+  useEffect(() => {
+    if (selectedUser) {
+      setUser(selectedUser);
+    } else {
+      setUser(newUser);
+    }
+  }, [selectedUser]);
 
   return (
     <IonPage>
@@ -121,6 +137,16 @@ const Editeur: React.FC<EditeurI> = ({
             </IonItem>
             <IonButton type='submit' expand='block' className='login__btn'>
               {selectedUser ? "Modifier" : "Créer"}
+            </IonButton>
+            <IonButton
+              color='danger'
+              expand='block'
+              className='login__btn'
+              onClick={() => {
+                setSelectedUser(null);
+                history.push("/users");
+              }}>
+              Annuler
             </IonButton>
           </IonList>
         </form>
