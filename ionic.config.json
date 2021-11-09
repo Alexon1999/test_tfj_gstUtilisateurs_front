@@ -1,0 +1,7 @@
+{
+  "name": "GestionUtilisateurs",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
