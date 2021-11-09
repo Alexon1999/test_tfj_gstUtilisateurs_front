@@ -1,2 +1,2 @@
 # Run the application
-ionic serve
+> ```ionic serve```
