@@ -1,0 +1,17 @@
+.home__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.home__container h1 {
+  color: rgb(91, 133, 224);
+}
+
+.home__container img {
+  max-height: 200px;
+  object-fit: contain;
+  margin-top: 10px;
+}
